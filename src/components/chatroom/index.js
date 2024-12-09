@@ -1,15 +1,19 @@
 import React from 'react';
-import { AuthContext } from '../../context/AuthProvider';
+import { Row, Col } from 'antd';
+import Sidebar from './Sidebar';
+import ChatWindow from './ChatWindow';
 
-const ChatRoom = () => {
-    const {
-        user: { displayName },
-      } = React.useContext(AuthContext);
-    return (
-        <div>
-            <h1>Hello World, {displayName}</h1>
-        </div>
-    );
-};
-
-export default ChatRoom;
+export default function ChatRoom() {
+  return (
+    <div>
+      <Row>
+        <Col span={6}>
+          <Sidebar />
+        </Col>
+        <Col span={18}>
+          <ChatWindow />
+        </Col>
+      </Row>
+    </div>
+  );
+}

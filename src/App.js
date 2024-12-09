@@ -1,10 +1,10 @@
 import './App.css';
 import Login from './components/login';
-import chatRoom from './components/chatroom';
+import chatRoom from './components/ChatRoom';
 
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 // import AppProvider from './context/AppProvider';
-import AuthProvider from './context/AuthProvider';
+import AuthProvider from './Context/AuthProvider';
 function App() {
   return (
     <BrowserRouter>
