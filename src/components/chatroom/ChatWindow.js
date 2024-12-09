@@ -124,7 +124,7 @@ export default function ChatWindow() {
   // }, [messages]);
 
   return (
-    <div>
+    <WrapperStyled>
       <HeaderStyled>
         <div className='header__infor'>
           <p className='header__title'>Room 1</p>
@@ -133,36 +133,36 @@ export default function ChatWindow() {
       </HeaderStyled>
 
       <div>
-        <Button icon={<UserAddOutlined />} type='text'>Mời</Button>
+        <ButtonGroupStyled icon={<UserAddOutlined />} type='text'>Mời</ButtonGroupStyled>
         <Avatar.Group size='small' maxCount={2}>
           <Tooltip title='a'>
             <Avatar >
-
+              A
             </Avatar>
           </Tooltip>
           <Tooltip title='b'>
             <Avatar >
-
+              B
             </Avatar>
           </Tooltip>
           <Tooltip title='c'>
             <Avatar >
-
+            C
             </Avatar>
           </Tooltip>
         </Avatar.Group>
       </div>
       <ContentStyled>
       <MessageListStyled></MessageListStyled>
-      <Form>
+      <FormStyled>
         <Form.Item>
           <Input />
         </Form.Item>
-        <Button>
+        <ButtonGroupStyled>
           Gửi
-        </Button>
-      </Form>
+        </ButtonGroupStyled>
+      </FormStyled>
       </ContentStyled>
-    </div>
+    </WrapperStyled>
   );
 }

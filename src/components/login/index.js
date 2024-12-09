@@ -1,6 +1,7 @@
 import React  from 'react'
 import { Row, Col, Button, Typography } from 'antd'
 import firebase, { auth } from '../../firebase/config';
+import { addDocument } from '../../firebase/services';
 const { Title } = Typography;
 
 
@@ -8,16 +9,16 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
 export default function Login() {
     const handleLogin = async (provider) => {
         const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
-        // if (additionalUserInfo?.isNewUser) {
-        //   addDocument('users', {
-        //     displayName: user.displayName,
-        //     email: user.email,
-        //     photoURL: user.photoURL,
-        //     uid: user.uid,
-        //     providerId: additionalUserInfo.providerId,
-        //     keywords: "abc",
-        //   });
-        // }
+        if (additionalUserInfo?.isNewUser) {
+          addDocument('users', {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            uid: user.uid,
+            providerId: additionalUserInfo.providerId,
+            keywords: "abc",
+          });
+        }
     };
     return (
         <Row justify='center' style={{ height: 800 }}>
