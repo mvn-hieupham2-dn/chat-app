@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { auth } from '../../firebase/config';
 import { AuthContext } from '../../Context/AuthProvider';
+import { AppContext } from '../../Context/AppProvider';
 
 const WrapperStyled = styled.div`
   display: flex;
@@ -21,8 +22,7 @@ export default function UserInfo() {
   const {
     user: { displayName, photoURL },
   } = React.useContext(AuthContext);
-  // const { clearState } = React.useContext(AppContext);
-
+  const { clearState } = React.useContext(AppContext);
   return (
     <WrapperStyled>
       <div>
@@ -35,7 +35,7 @@ export default function UserInfo() {
         ghost
         onClick={() => {
           // clear state in App Provider when logout
-          // clearState();
+          clearState();
           auth.signOut();
         }}
       >

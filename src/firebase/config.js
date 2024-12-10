@@ -11,11 +11,16 @@ const firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
-
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-export { auth, db };
+
+if (window.location.hostname === 'localhost') {
+    auth.useEmulator('http://localhost:9099');
+    db.useEmulator('localhost', '8080');
+}
+
+export { db, auth };
 export default firebase;
